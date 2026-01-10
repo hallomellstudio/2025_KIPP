@@ -3,6 +3,7 @@ title: Asesement UTS dan UAS Berbasis Rubrik
 format:
   typst: 
     keep-typ: true
+    
 
   latex:
     documentclass: scrreprt
@@ -34,7 +35,7 @@ Untuk mengukur CPMK tersebut, asesmen akan menggunakan beberapa bentuk penilaian
 1.  **Kuis Materi Topik Setiap Minggu (Q-1 s/d Q-14):** Mengukur pemahaman konseptual dari 14 topik perkuliahan yang disampaikan setiap minggu.
 2.  **Ujian Tengah Semester (UTS-1 s/d UTS-5):** Fokus pada proyek demonstrasi komunikasi personal
     1.  UTS-1 All About Me, berisikan pesan yang memperkenalkan sosok diri kita
-    2.  UTS-2 Song for you, berisikan pesan berbentuk puisi, lago, dan/atau viodeo clip\[
+    2.  UTS-2 Song for you, berisikan pesan berbentuk puisi, lago, dan/atau vioeo clip
     3.  UTS-3 My Stories for You, berisikan kisah inspiratif dan menarik yang Anda ingin bagikan dengan pribadi lain
     4.  UTS-4 My Shape, berisikan laporan siapa Anda berdasar hasil sebuah lembar kerja
     5.  UTS-5 My Personal Review, berisikan telahan pesan personal berdasarkan rubrik
@@ -156,7 +157,7 @@ df
 #| tbl-cap: Rubrik My Personal Reviews
 
 # reading csv file 
-df = pd.read_csv("Rubrik_II-2100_CSV/UTS-5.csv")
+df = pd.read_csv("Rubrik_II-2100_CSV/rubric_UAS5_MyProfessionalReviews.csv")
 df
 
 
@@ -164,7 +165,7 @@ df
 
 
 
-# Rubrik UTS-1 My Concepts
+# Rubrik UAS-1 My Concepts
 
 
 ```{python}
@@ -173,7 +174,7 @@ df
 #| tbl-cap: Rubrik My Concepts
 
 # reading csv file 
-df = pd.read_csv("Rubrik_II-2100_CSV/UAS-1.csv")
+df = pd.read_csv("Rubrik_II-2100_CSV/rubric_UAS1_MyConcepts.csv")
 df
 
 
@@ -189,7 +190,7 @@ df
 #| tbl-cap: Rubrik My Opinions
 
 # reading csv file 
-df = pd.read_csv("Rubrik_II-2100_CSV/UAS-2.csv")
+df = pd.read_csv("Rubrik_II-2100_CSV/rubric_UAS2_MyOpinions.csv")
 df
 
 
@@ -205,7 +206,7 @@ df
 #| tbl-cap: Rubrik My Innovations
 
 # reading csv file 
-df = pd.read_csv("Rubrik_II-2100_CSV/UTS-3.csv")
+df = pd.read_csv("Rubrik_II-2100_CSV/rubric_UAS3_MyInnovations.csv")
 df
 
 
@@ -222,7 +223,7 @@ df
 #| tbl-cap: Rubrik My Knowledge
 
 # reading csv file 
-df = pd.read_csv("Rubrik_II-2100_CSV/UTS-4.csv")
+df = pd.read_csv("Rubrik_II-2100_CSV/rubric_UAS4_MyKnowledge.csv")
 df
 
 
@@ -239,7 +240,7 @@ df
 #| tbl-cap: Rubrik My Profesional Reviews
 
 # reading csv file 
-df = pd.read_csv("Rubrik_II-2100_CSV/UAS-5.csv")
+df = pd.read_csv("Rubrik_II-2100_CSV/rubric_UAS5_MyProfessionalReviews.csv")
 df
 
 
@@ -268,32 +269,48 @@ Isi dengan narasi penilaian secara khusus per UTS lalu beri hasil detail. beri j
 
 Hitung skor setiap TUGAS lalu hitung kontribusi nilai tersebut pada skor CPMK, menurut @tbl-asesmen.
 
+::: {.landscape}
+
 ```{python}
-#| label: tbl-skor-akhir 
-#| tbl-cap: Daftar Nilai
+#| label: tbl-skor-akhir-UTS 
+#| tbl-cap: Daftar Nilai UTS
 
 from IPython.display import Markdown
 from tabulate import tabulate
-tableUTS = [["UTS-1"," "," "," "," "," "],
-         ["UTS-2"," "," "," "," "," "],
-         ["UTS-3"," "," ", " "," "," "],
-         ["UTS-4"," "," "," "," "," "],
-         ["UTS-5"," "," "," "," "," "],
-         ["Total"," "," "," "," ", ""]]
+tableUTS = [["UTS-1"," "," "," "," "," "," "," "," "," "],
+         ["UTS-2"," "," "," "," "," "," "," "," "," "],
+         ["UTS-3"," "," ", " "," "," "," "," "," "," "],
+         ["UTS-4"," "," "," "," "," "," "," "," "," "],
+         ["UTS-5"," "," "," "," "," "," "," "," "," "],
+         ["Total"," "," "," "," "," "," "," "," ", ""]]
 Markdown(tabulate(
   tableUTS, 
-  headersUTS=["UTS","Skor", "CPMK-1","CPMK-2","CPMK-3","CPMK-4" ]
+  headers=["UTS","Criterion-0", "Criterion-1","Criterion-2","Criterion-3","Skor", "CPMK-1","CPMK-2","CPMK-3","CPMK-4" ]
 ))
 
-tableUAS = [["UAS-1"," "," "," "," "," "],
-         ["UAS-2"," "," "," "," "," "],
-         ["UAS-3"," "," ", " "," "," "],
-         ["UAS-4"," "," "," "," "," "],
-         ["UAS-5"," "," "," "," "," "],
-         ["Total"," "," "," "," ", ""]]
+
+```
+
+
+```{python}
+#| label: tbl-skor-akhir-UAS 
+#| tbl-cap: Daftar Nilai UAS
+
+from IPython.display import Markdown
+from tabulate import tabulate
+
+
+tableUAS = [["UAS-1"," "," "," "," "," "," "," "," "," "],
+         ["UAS-2"," "," "," "," "," "," "," "," "," "],
+         ["UAS-3"," "," ", " "," "," "," "," "," "," "],
+         ["UAS-4"," "," "," "," "," "," "," "," "," "],
+         ["UAS-5"," "," "," "," "," "," "," "," "," "],
+         ["Total"," "," "," "," "," "," "," "," ", ""]]
 Markdown(tabulate(
   tableUAS, 
-  headersUAS=["UAS","Skor", "CPMK-1","CPMK-2","CPMK-3","CPMK-4" ]
+  headers=["UAS","Criterion-0", "Criterion-1","Criterion-2","Criterion-3", "Skor", "CPMK-1","CPMK-2","CPMK-3","CPMK-4" ]
 ))
 
 ```
+
+:::
